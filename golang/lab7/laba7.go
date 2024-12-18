@@ -32,10 +32,10 @@ func Lab7Run() {
 	
 	doll.SetPrice(3000)
 
-	listProducts := []Product{lipstick, ship, doll}
+	listProducts := []Product{lipstick, yacht, doll}
 	fmt.Printf("Сумма товаров, без учета скидки, равна: %v рублей \n", CalculationSumProduct(listProducts))
 	lipstick.ApplyDiscount(5)
-	ship.ApplyDiscount(15)
+	yacht.ApplyDiscount(15)
 	doll.ApplyDiscount(10)
 	fmt.Printf("Сумма товаров, без учета скидки, равна: %v рублей \n", CalculationSumProduct(listProducts))
 }
