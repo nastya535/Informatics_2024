@@ -14,9 +14,9 @@ func CalculationSumProduct(listProducts []Product) string {
 }
 
 func Lab7Run() {
-	lipstick := &Cosmetic{name: "помада", price: 400, brand: "influence"}
-	ship := &Ship{name: "яхта", material: "алюминий", price: 9000000}
-	doll := &Toy{name: "барби", price: 1500, material: "пластик"}
+	var lipstick Product := &Cosmetic{name: "помада", price: 400, brand: "influence"}
+	var ship Product := &Ship{name: "яхта", material: "алюминий", price: 9000000}
+	var doll Product := &Toy{name: "барби", price: 1500, material: "пластик"}
 
 	doll.SetPrice(3000)
 	ship.SetMaterial("сталь")
