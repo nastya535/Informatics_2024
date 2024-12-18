@@ -15,12 +15,22 @@ func CalculationSumProduct(listProducts []Product) string {
 
 func Lab7Run() {
 	var lipstick Product = &Cosmetic{name: "помада", price: 400, brand: "influence"}
-	var ship Product = &Ship{name: "яхта", material: "алюминий", price: 9000000}
+	var yacht Product = &Ship{name: "яхта", material: "алюминий", price: 9000000}
 	var doll Product = &Toy{name: "барби", price: 1500, material: "пластик"}
+	
+	if s, ok := yacht.(*Ship); ok {
+        	s.SetMaterial("Сталь")
+    	} else {
+        fmt.Println("Ошибка приведения типа для Ship")
+   	}
 
+	if c, ok := lipstick.(*Cosmetic); ok {
+        	c.SetBrand("NYX")
+    	} else {
+        fmt.Println("Ошибка приведения типа для Cosmetic")
+	}
+	
 	doll.SetPrice(3000)
-	ship.SetMaterial("сталь")
-	lipstick.SetBrand("NYX")
 
 	listProducts := []Product{lipstick, ship, doll}
 	fmt.Printf("Сумма товаров, без учета скидки, равна: %v рублей \n", CalculationSumProduct(listProducts))
