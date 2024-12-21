@@ -4,38 +4,30 @@ import (
 	"fmt"
 )
 
-func CalculationSumProduct(listProducts []Product) string {
+func CalculationSumProduct(listProducts []Product) float64 {
 	var sum float64 = 0
 	for _, product := range listProducts {
 		sum += product.GetPrice()
 	}
-	s := fmt.Sprintf("%.2f", sum)
-	return s
+	return sum
 }
 
 func Lab7Run() {
-	var lipstick Product = &Cosmetic{name: "помада", price: 400, brand: "influence"}
-	var yacht Product = &Ship{name: "яхта", material: "алюминий", price: 9000000}
-	var doll Product = &Toy{name: "барби", price: 1500, material: "пластик"}
-	
-	if s, ok := yacht.(*Ship); ok {
-        	s.SetMaterial("Сталь")
-    	} else {
-        fmt.Println("Ошибка приведения типа для Ship")
-   	}
-
-	if c, ok := lipstick.(*Cosmetic); ok {
-        	c.SetBrand("NYX")
-    	} else {
-        fmt.Println("Ошибка приведения типа для Cosmetic")
-	}
+	lipstick := &Cosmetic{name: "помада", price: 400, brand: "influence"}
+	yacht := &Ship{name: "яхта", material: "алюминий", price: 9000000}
+	doll := &Toy{name: "барби", price: 1500, material: "пластик"}
 	
 	doll.SetPrice(3000)
+	lipstick.SetBrand("NYX")
+	yacht.SetMaterial("сталь")
 
 	listProducts := []Product{lipstick, yacht, doll}
+	
 	fmt.Printf("Сумма товаров, без учета скидки, равна: %v рублей \n", CalculationSumProduct(listProducts))
-	lipstick.ApplyDiscount(5)
-	yacht.ApplyDiscount(15)
-	doll.ApplyDiscount(10)
+
+	discounts := []float64{10, 35, 10}
+	for i, product := range listProducts {
+		product.ApplyDiscount(discounts[i])
+	}
 	fmt.Printf("Сумма товаров, без учета скидки, равна: %v рублей \n", CalculationSumProduct(listProducts))
 }
